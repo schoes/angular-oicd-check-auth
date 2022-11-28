@@ -1,29 +1,42 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
-import { AutoLoginPartialRoutesGuard } from 'angular-auth-oidc-client';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {
+  AutoLoginAllRoutesGuard,
+  AutoLoginPartialRoutesGuard,
+} from 'angular-auth-oidc-client';
 
 const ROUTES: Routes = [
   {
-    path: 'auth-one',
+    path: 'accept-code-one',
     loadChildren: () =>
-      import('./check-auth-one/check-auth-one.module').then(
-        (m) => m.CheckAuthOneModule
+      import('./accept-code-one/accept-code-one.module').then(
+        (m) => m.AcceptCodeOneModule
       ),
-    canLoad: [AutoLoginPartialRoutesGuard],
   },
   {
     path: 'auth-two',
     loadChildren: () =>
-      import('./check-auth-two/check-auth-two.module').then(
-        (m) => m.CheckAuthTwoModule
+      import('./accept-code-two/accept-code-two.module').then(
+        (m) => m.AcceptCodeTwoModule
       ),
+  },
+  {
+    path: 'protected',
+    loadChildren: () =>
+      import('./protected/protected.module').then((m) => m.ProtectedModule),
     canLoad: [AutoLoginPartialRoutesGuard],
   },
 ];
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [],
+  imports: [
+    RouterModule.forRoot(ROUTES, {
+      // async load of child modules after initial page is rendered
+      preloadingStrategy: PreloadAllModules,
+      relativeLinkResolution: 'corrected',
+    }),
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

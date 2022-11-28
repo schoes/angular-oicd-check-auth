@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CheckAuthOneComponent } from './check-auth-one.component';
-import { CheckAuthOneGuard } from './check-auth-one.guard';
+import { AcceptCodeOneComponent } from './accept-code-one.component';
+import { AcceptCodeOneGuard } from './accept-code-one.guard';
+
 
 @NgModule({
   imports: [
@@ -10,11 +11,11 @@ import { CheckAuthOneGuard } from './check-auth-one.guard';
     RouterModule.forChild([
       {
         path: '',
-        component: CheckAuthOneComponent,
-        canActivate: [CheckAuthOneGuard],
+        component: AcceptCodeOneComponent,
+        canActivate: [AcceptCodeOneGuard],
       },
     ]),
   ],
   declarations: [],
 })
-export class CheckAuthOneModule {}
+export class AcceptCodeOneModule {}

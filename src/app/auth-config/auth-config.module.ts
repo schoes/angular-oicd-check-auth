@@ -19,13 +19,12 @@ export const authConfigLoader = (): StsConfigHttpLoader => {
           logLevel: LogLevel.Debug,
           historyCleanupOff: true,
           authority: 'https://offeringsolutions-sts.azurewebsites.net',
-          redirectUrl: window.location.origin,
           clientId: 'angularCodeRefreshTokens',
           scope: 'openid profile email offline_access',
           responseType: 'code',
           silentRenew: true,
           useRefreshToken: true,
-          redirectUrl: `${location.origin}/b2c-useraccount/${RoutePath.AcceptCode}`,
+          redirectUrl: `${location.origin}/accept-code-one`,
           customParamsAuthRequest: {
             claims: JSON.stringify({
               id_token: {
