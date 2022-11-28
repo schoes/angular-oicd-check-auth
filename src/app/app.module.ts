@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
+import { AuthConfigModule } from './auth-config/auth-config.module';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FormsModule, AuthConfigModule, AppRoutingModule],
+  declarations: [AppComponent, HelloComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
